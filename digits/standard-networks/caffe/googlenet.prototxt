@@ -2482,6 +2482,7 @@ layer {
   bottom: "loss3/classifier"
   bottom: "label"
   top: "accuracy"
+  include { stage: "train" }
   include { stage: "val" }
 }
 layer {
@@ -2490,6 +2491,7 @@ layer {
   bottom: "loss3/classifier"
   bottom: "label"
   top: "accuracy-top5"
+  include { stage: "train" }
   include { stage: "val" }
   accuracy_param {
     top_k: 5

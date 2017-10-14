@@ -364,6 +364,7 @@ layer {
   bottom: "fc8"
   bottom: "label"
   top: "accuracy"
+  include { stage: "train" }
   include { stage: "val" }
 }
 layer {
