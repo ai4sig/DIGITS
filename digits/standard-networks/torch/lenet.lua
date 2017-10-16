@@ -44,6 +44,11 @@ return function(params)
     lenet:add(nn.Linear(500, nclasses))  -- 500 -> nclasses
     lenet:add(nn.LogSoftMax())
 
+    -- local lenet = require('weight-init')(lenet, 'heuristic')
+    -- local lenet = require('weight-init')(lenet, 'xavier')
+    -- local lenet = require('weight-init')(lenet, 'xavier_caffe')
+    -- local lenet = require('weight-init')(lenet, 'kaiming')
+
     return {
         model = lenet,
         loss = nn.ClassNLLCriterion(),
