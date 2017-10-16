@@ -1,4 +1,5 @@
 # Copyright (c) 2015-2017, NVIDIA CORPORATION.  All rights reserved.
+# Modified work Copyright (c) 2017, AI4SIG.  All rights reserved.
 
 import argparse
 import sys
@@ -7,6 +8,7 @@ import time
 from cifar10 import Cifar10Downloader
 from cifar100 import Cifar100Downloader
 from mnist import MnistDownloader
+from fashionmnist import FashionMnistDownloader
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Download-Data tool - DIGITS')
@@ -14,7 +16,7 @@ if __name__ == '__main__':
     # Positional arguments
 
     parser.add_argument('dataset',
-                        help='mnist/cifar10/cifar100'
+                        help='mnist/cifar10/cifar100/fashionmnist'
                         )
     parser.add_argument('output_dir',
                         help='The output directory for the data'
@@ -44,6 +46,11 @@ if __name__ == '__main__':
         d.getData()
     elif dataset == 'cifar100':
         d = Cifar100Downloader(
+            outdir=args['output_dir'],
+            clean=args['clean'])
+        d.getData()
+    elif dataset == 'fashionmnist':
+        d = FashionMnistDownloader(
             outdir=args['output_dir'],
             clean=args['clean'])
         d.getData()
